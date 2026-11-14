@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <!-- Google Fonts & Canvas Confetti -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1c29 0%, #2b1055 100%);
+            font-family: 'Outfit', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            padding: 20px;
+        }
+
+        .birthday-container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 28px;
+            padding: 28px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 
+                        0 0 50px rgba(236, 72, 153, 0.15);
+            text-align: center;
+            position: relative;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 3:4 Aspect Ratio Photo Wrapper */
+        .photo-frame {
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            background: #111;
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .photo-frame:hover img {
+            transform: scale(1.03);
+        }
+
+        .badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            color: #ff758c;
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(255, 117, 140, 0.3);
+        }
+
+        .content {
+            margin-top: 24px;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #ffffff;
+            margin-bottom: 8px;
+            font-style: italic;
+            text-shadow: 0 2px 10px rgba(255, 255, 255, 0.2);
+        }
+
+        .friend-name {
+            background: linear-gradient(92deg, #ff758c 0%, #ff7eb3 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        p {
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 24px;
+            padding: 0 10px;
+        }
+
+        .celebrate-btn {
+            background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(255, 117, 140, 0.4);
+            transition: all 0.3s ease;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .celebrate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(255, 117, 140, 0.6);
+        }
+
+        .celebrate-btn:active {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="birthday-container">
+        <!-- 3:4 Photo Frame -->
+        <div class="photo-frame">
+            <!-- Replace the src link with your friend's photo URL or local file path -->
+            <img src="" alt="Birthday Friend">
+            <div class="badge">✨ Special Day</div>
+        </div>
+
+        <!-- Text Content -->
+        <div class="content">
+            <h1>Happy Birthday, <span class="friend-name">Swetha!</span></h1>
+            <p>Wishing you a year filled with endless laughter, amazing adventures, and all the success you deserve. Let's make this year unforgettable!</p>
+            
+            <!-- Confetti trigger button -->
+            <button class="celebrate-btn" onclick="triggerCelebration()">
+                🎉 Celebrate! 🎂
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Trigger confetti automatically on load
+        window.onload = () => {
+            triggerCelebration();
+        };
+
+        function triggerCelebration() {
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 },
+                colors: ['#ff758c', '#ff7eb3', '#ffffff', '#ffd700', '#7b2cbf']
+            });
+        }
+    </script>
+</body>
+</html>
